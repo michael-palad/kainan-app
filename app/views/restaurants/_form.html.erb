@@ -31,7 +31,9 @@
    <div class="form-group">
     <%= f.label :cuisine %>
     <%= f.select :cuisine, 
-        options_for_select(%w(Filipino Chinese American Korean Fastfood)),
+        options_for_select([["Filipino", "Filipino"], ["Chinese", "Chinese"],
+        ["American", "American"], ["Korean", "Korean"], 
+        ["Fastfood", "Fastfood"]], selected: f.object.cuisine),
         { include_blank: "Select Cuisine" } %>
   </div>
     

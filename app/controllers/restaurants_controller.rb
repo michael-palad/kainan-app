@@ -25,7 +25,11 @@ class RestaurantsController < ApplicationController
   end
   
   def update
-    
+    if @restaurant.update(restaurant_params)
+      redirect_to @restaurant
+    else
+      render 'edit'  
+    end
   end
   
   private
