@@ -1,0 +1,27 @@
+<%= form_for @restaurant do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :telephone_number %>
+    <%= f.text_field :telephone_number %>
+  </div>
+  
+   <div class="form-group">
+    <%= f.label :cuisine %>
+    <%= f.text_field :cuisine %>
+  </div>
+    
+  <% if @restaurant.new_record? %>    
+    <%= f.submit "Add Restaurant" %>
+  <% else %>
+    <%= f.submit "Update Restaurant" %>
+  <% end %>
+<% end %>
