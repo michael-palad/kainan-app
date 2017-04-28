@@ -3,6 +3,10 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.order(created_at: :desc)
   end
   
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+  
   def new
     @restaurant = Restaurant.new
   end
