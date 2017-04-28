@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   def index
+    @restaurants = Restaurant.order(created_at: :desc)
   end
   
   def new

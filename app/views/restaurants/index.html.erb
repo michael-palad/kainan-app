@@ -1,1 +1,10 @@
 <h2>Restaurants Index</h2>
+
+<% @restaurants.each do |resto| %>
+  <h3><%= resto.name %></h3>
+  <p>
+    <strong><%= resto.address %></strong><br />
+    <strong><%= resto.telephone_number %></strong><br />
+    <strong><%= resto.cuisine %></strong><br />
+  </p>
+<% end %>
