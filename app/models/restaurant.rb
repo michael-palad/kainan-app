@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
+  after_create :submitter_automatic_star
     
   # Associations
   belongs_to :user
@@ -26,6 +27,12 @@ class Restaurant < ApplicationRecord
     unless matched
       errors.add(:telephone_number, "Invalid format for telephone number")
     end
+  end
+  
+  def submitter_automatic_star
+    user = self.user
+    user.starred_restaurants << self
+    user.save
   end
   
 end
