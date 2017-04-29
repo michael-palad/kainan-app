@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :verify_user, only: [:edit, :update, :destroy]
   before_action :find_params, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -46,6 +47,13 @@ class RestaurantsController < ApplicationController
   
     def restaurant_params
       params.require(:restaurant).permit(:name, :address, :telephone_number, :cuisine)  
+    end
+    
+    def verify_user
+      restaurant = Restaurant.find(params[:id])
+      if current_user != restaurant.user
+        redirect_to root_path  
+      end
     end
 end
 
