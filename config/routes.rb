@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
     
     collection do
-      get "give-me-3", to: "restaurants#random", as: "give_me_3"  
+      get "random", to: "restaurants#random", as: "random"  
       get 'cuisine/:name', to: "restaurants#cuisine_filter", as: "cuisine"
       get 'most-popular', to: "restaurants#most_popular", as: "most_popular"
     end
