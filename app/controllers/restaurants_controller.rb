@@ -71,6 +71,11 @@ class RestaurantsController < ApplicationController
     render 'index'
   end
   
+  def starred_filter
+    @restaurants = current_user.starred_restaurants.order(created_at: :desc)   
+    render 'index'
+  end
+  
   private
   
     def find_params

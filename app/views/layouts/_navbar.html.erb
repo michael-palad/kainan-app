@@ -46,6 +46,12 @@
         <li>
           <%= link_to "Most Popular", most_popular_restaurants_path %>
         </li>
+        
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "Starred Restaurants", starred_restaurants_path %>
+          </li>
+        <% end %>
       </ul>
       
        <% if user_signed_in? %>
