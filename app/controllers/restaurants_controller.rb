@@ -1,7 +1,8 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :verify_user, only: [:edit, :update, :destroy]
-  before_action :find_params, only: [:show, :edit, :update, :destroy]
+  before_action :find_params, only: [:show, :edit, :update, :destroy,
+                              :give_star, :remove_star]
   
   def index
     @restaurants = Restaurant.order(created_at: :desc)
@@ -40,11 +41,13 @@ class RestaurantsController < ApplicationController
   end
   
   def give_star
-    
+    @restaurant.starring_users << current_user
+    redirect_to @restaurant
   end
   
   def remove_star
-    
+    @restaurant.starring_users.delete(current_user)
+    redirect_to @restaurant
   end
   
   private
