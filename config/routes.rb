@@ -7,5 +7,9 @@ Rails.application.routes.draw do
       patch "star-restaurant", to: "restaurants#give_star", as: "star"
       delete "unstar-restaurant", to: "restaurants#remove_star", as: "unstar"
     end
+    
+    collection do
+      get "give-me-3", to: "restaurants#give_me_3", as: "give_me_3"  
+    end
   end
 end

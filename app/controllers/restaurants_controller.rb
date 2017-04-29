@@ -50,6 +50,16 @@ class RestaurantsController < ApplicationController
     redirect_to @restaurant
   end
   
+  def give_me_3
+    if Restaurant.count > 3
+      ids = Restaurant.pluck(:id)
+      @restaurants = Restaurant.find(ids.sample(3))
+    else
+      @restaurants = Restaurant.all  
+    end
+    render 'index'
+  end
+  
   private
   
     def find_params
