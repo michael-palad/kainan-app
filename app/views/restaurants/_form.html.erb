@@ -1,5 +1,5 @@
-<%= form_for @restaurant do |f| %>
-  <div>
+<%= form_for(@restaurant, html: { class: "form-horizontal" } ) do |f| %>
+  <div class="text-danger">
     <% if @restaurant.errors.any? %>
       <%= pluralize(@restaurant.errors.count, "error") %>
       prevented this restaurant from being
@@ -7,39 +7,49 @@
       
       <ul>
         <% @restaurant.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li><%= msg.html_safe %></li>
         <% end %>
       </ul>
     <% end %>
   </div>
 
   <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :name, class: "control-label col-sm-1" %>
+    <div class="col-sm-6">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
   
   <div class="form-group">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+    <%= f.label :address, class: "control-label col-sm-1" %>
+    <div class="col-sm-6">
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
   </div>
   
   <div class="form-group">
-    <%= f.label :telephone_number %>
-    <%= f.text_field :telephone_number %>
+    <%= f.label :telephone_number, class: "control-label col-sm-1" %>
+    <div class="col-sm-6">
+      <%= f.text_field :telephone_number, class: "form-control" %>
+    </div>
   </div>
   
    <div class="form-group">
-    <%= f.label :cuisine %>
-    <%= f.select :cuisine, 
+    <%= f.label :cuisine, class: "control-label col-sm-1" %>
+    <div class="col-sm-6">
+      <%= f.select :cuisine, 
         options_for_select([["Filipino", "Filipino"], ["Chinese", "Chinese"],
         ["American", "American"], ["Korean", "Korean"], 
         ["Fastfood", "Fastfood"]], selected: f.object.cuisine),
-        { include_blank: "Select Cuisine" } %>
+        { include_blank: "Select Cuisine" }, class: "form-control" %>
+    </div>
   </div>
     
   <% if @restaurant.new_record? %>    
-    <%= f.submit "Add Restaurant" %>
+    <%= f.submit "Add Restaurant", class: "btn btn-success btn-lg", 
+          data: { disable_with: "Adding Restaurant..." } %>
   <% else %>
-    <%= f.submit "Update Restaurant" %>
+    <%= f.submit "Update Restaurant", class: "btn btn-success btn-lg", 
+          data: { disable_with: "Updating Restaurant..." } %>
   <% end %>
 <% end %>

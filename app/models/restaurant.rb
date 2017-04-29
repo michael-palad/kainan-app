@@ -25,7 +25,15 @@ class Restaurant < ApplicationRecord
       re.match(telephone_number)
     end.any?
     unless matched
-      errors.add(:telephone_number, "Invalid format for telephone number")
+      error_msg = <<-DOC
+      format is invalid<br />
+      Example:<br />
+        +63 2 123-4567<br />
+        02 123-4567<br />
+        +63 2 123-4567 ext. 103
+      DOC
+    
+      errors.add(:telephone_number, error_msg)
     end
   end
   
