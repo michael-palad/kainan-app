@@ -29,10 +29,12 @@ class Restaurant < ApplicationRecord
     end
   end
   
-  def submitter_automatic_star
-    user = self.user
-    user.starred_restaurants << self
-    user.save
-  end
+  protected
   
+    def submitter_automatic_star
+      user = self.user
+      user.starred_restaurants << self
+      user.save
+    end
+
 end
