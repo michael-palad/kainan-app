@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show,
-                  :give_me_3, :cuisine_filter, :most_popular]
+                  :random, :cuisine_filter, :most_popular]
   before_action :verify_user, only: [:edit, :update, :destroy]
   before_action :find_params, only: [:show, :edit, :update, :destroy,
                               :give_star, :remove_star]

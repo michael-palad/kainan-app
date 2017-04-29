@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KainanApp</title>
+    <title>
+      Kainan-App - <%= content_for?(:title) ? yield(:title) : "let's eat" %>
+    </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,6 +16,8 @@
     <!--<p class="notice"><%= notice %></p>-->
     <!--<p class="alert"><%= alert %></p>-->
     
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

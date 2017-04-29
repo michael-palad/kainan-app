@@ -1,4 +1,6 @@
-<h2>Restaurants Index</h2>
+<% content_for(:title) do %>
+ <%= get_page_title %>
+<% end %>
 
 <% @restaurants.each do |resto| %>
   <h3><%= link_to resto.name, resto %></h3>
