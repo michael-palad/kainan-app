@@ -12,14 +12,14 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li class="<%= get_active_if_current(root_path) %>">
           <%= link_to "Home", root_path %>
         </li>
-        <li>
+        <li class="<%= get_active_if_current(random_restaurants_path) %>">
           <%= link_to "Random", random_restaurants_path %>
         </li>
         
-        <li>
+        <li class="<%= get_active_for_cuisine %>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
              role="button" aria-haspopup="true" aria-expanded="false">
              Cuisines <span class="caret"></span>
@@ -43,12 +43,12 @@
           </ul>
         </li>
         
-        <li>
+        <li class="<%= get_active_if_current(most_popular_restaurants_path) %>">
           <%= link_to "Most Popular", most_popular_restaurants_path %>
         </li>
         
         <% if user_signed_in? %>
-          <li>
+          <li class="<%= get_active_if_current(starred_restaurants_path) %>">
             <%= link_to "Starred Restaurants", starred_restaurants_path %>
           </li>
         <% end %>

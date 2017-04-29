@@ -19,4 +19,13 @@ module ApplicationHelper
       end
     end
   end
+  
+  def get_active_if_current(path)
+    current_page?(path) ? 'active' : ''
+  end
+  
+  def get_active_for_cuisine
+    controller_name == 'restaurants' && action_name == 'cuisine_filter' ?
+      'active' : ''
+  end
 end
