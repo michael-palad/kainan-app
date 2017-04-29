@@ -5,8 +5,11 @@ class RestaurantsController < ApplicationController
   before_action :find_params, only: [:show, :edit, :update, :destroy,
                               :give_star, :remove_star]
   
+  RestaurantsPerPage = 3
+  
   def index
     @restaurants = Restaurant.order(created_at: :desc)
+            .paginate(:page => params[:page], :per_page => RestaurantsPerPage)
   end
   
   def show
@@ -56,23 +59,26 @@ class RestaurantsController < ApplicationController
       ids = Restaurant.pluck(:id)
       @restaurants = Restaurant.find(ids.sample(3))
     else
-      @restaurants = Restaurant.all  
+      @restaurants = Restaurant.all
     end
     render 'index'
   end
   
   def cuisine_filter
-    @restaurants = Restaurant.where('cuisine = ?', params[:name].capitalize)  
+    @restaurants = Restaurant.where('cuisine = ?', params[:name].capitalize)
+        .paginate(:page => params[:page], :per_page => RestaurantsPerPage)
     render 'index'
   end  
   
   def most_popular
     @restaurants = Restaurant.order(stars_count: :desc)
+        .paginate(:page => params[:page], :per_page => RestaurantsPerPage)
     render 'index'
   end
   
   def starred_filter
     @restaurants = current_user.starred_restaurants.order(created_at: :desc)   
+        .paginate(:page => params[:page], :per_page => RestaurantsPerPage)
     render 'index'
   end
   

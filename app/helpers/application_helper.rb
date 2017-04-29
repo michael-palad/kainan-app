@@ -28,4 +28,8 @@ module ApplicationHelper
     controller_name == 'restaurants' && action_name == 'cuisine_filter' ?
       'active' : ''
   end
+  
+  def pagination_shown?
+    action_name != 'random'
+  end
 end

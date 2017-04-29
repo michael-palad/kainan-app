@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-lg-8">
 
 <% @restaurants.each do |resto| %>
   <div class="panel panel-default">
@@ -23,5 +23,11 @@
   
 <% end %>
 
+  <% if pagination_shown? %>
+    <div class="resto_pagination">
+      <%= will_paginate @restaurants %>
+    </div>
+  <% end %>
+  
   </div>
 </div>    
