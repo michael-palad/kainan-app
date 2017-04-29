@@ -60,6 +60,11 @@ class RestaurantsController < ApplicationController
     render 'index'
   end
   
+  def cuisine
+    @restaurants = Restaurant.where('cuisine = ?', params[:name].capitalize)  
+    render 'index'
+  end  
+  
   private
   
     def find_params

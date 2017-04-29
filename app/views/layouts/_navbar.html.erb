@@ -15,7 +15,38 @@
         <li class="active">
           <%= link_to "Give me 3", give_me_3_restaurants_path %>
         </li>
-        <li><a href="#">Link</a></li>
+        
+        <li>
+          <!--<button id="user-btn" type="button" -->
+          <!--  class="btn btn-primary dropdown-toggle" -->
+          <!--  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+          <!--  Cuisines <span class="caret"></span>-->
+          <!--</button>-->
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+             role="button" aria-haspopup="true" aria-expanded="false">
+             Cuisines <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to "Filipino", cuisine_restaurants_path('filipino') %>
+            </li>
+            <li>
+              <%= link_to "Chinese", cuisine_restaurants_path('chinese') %>
+            </li>
+            <li>
+              <%= link_to "American", cuisine_restaurants_path('american') %>
+            </li>
+            <li>
+              <%= link_to "Korean", cuisine_restaurants_path('korean') %>
+            </li>
+            <li>
+              <%= link_to "Fastfood", cuisine_restaurants_path('fastfood') %>
+            </li>
+          </ul>
+          
+        </li>
+        
       </ul>
       
        <% if user_signed_in? %>
