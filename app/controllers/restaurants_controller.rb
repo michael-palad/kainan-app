@@ -67,7 +67,7 @@ class RestaurantsController < ApplicationController
   end  
   
   def most_popular
-    #@restaurants = Restaurant.order('')
+    @restaurants = Restaurant.order(stars_count: :desc)
     render 'index'
   end
   
