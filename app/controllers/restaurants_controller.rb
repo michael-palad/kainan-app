@@ -51,7 +51,7 @@ class RestaurantsController < ApplicationController
     redirect_to @restaurant
   end
   
-  def give_me_3
+  def random
     if Restaurant.count > 3
       ids = Restaurant.pluck(:id)
       @restaurants = Restaurant.find(ids.sample(3))
