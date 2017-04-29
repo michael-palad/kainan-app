@@ -8,9 +8,22 @@
 <p>
   <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
   <%= @restaurant.starring_users.size %> <br />
-  <button class="btn btn-xs btn-success">
-    Give <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-  </button>
+  
+  <% if user_signed_in? %>
+    <% if current_user.starred_restaurants.include?(@restaurant) %>
+      <%= link_to unstar_restaurant_path(@restaurant), method: :delete,
+            class: "btn-sm btn-success" do %>
+        Take <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <% end %>
+      
+    <% else %>
+      <%= link_to star_restaurant_path(@restaurant), method: :patch,
+            class: "btn-sm btn-success" do %>
+        Give <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <% end %>
+      
+    <% end %>
+  <% end %>
 </p>
 
 

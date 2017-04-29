@@ -39,6 +39,14 @@ class RestaurantsController < ApplicationController
     redirect_to root_path
   end
   
+  def give_star
+    
+  end
+  
+  def remove_star
+    
+  end
+  
   private
   
     def find_params
