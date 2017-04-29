@@ -41,9 +41,11 @@
               <%= link_to "Fastfood", cuisine_restaurants_path('fastfood') %>
             </li>
           </ul>
-          
         </li>
         
+        <li>
+          <%= link_to "Most Popular", give_me_3_restaurants_path %>
+        </li>
       </ul>
       
        <% if user_signed_in? %>

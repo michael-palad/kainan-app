@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     
     collection do
       get "give-me-3", to: "restaurants#give_me_3", as: "give_me_3"  
-      get 'cuisine/:name', to: "restaurants#cuisine", as: "cuisine"
+      get 'cuisine/:name', to: "restaurants#cuisine_filter", as: "cuisine"
+      get 'most-popular', to: "restaurants#most_popular", as: "most_popular"
     end
   end
 end
