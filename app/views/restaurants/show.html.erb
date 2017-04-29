@@ -5,6 +5,15 @@
     <strong><%= @restaurant.cuisine %></strong><br />
 </p>
 
+<p>
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+  <%= @restaurant.starring_users.size %> <br />
+  <button class="btn btn-xs btn-success">
+    Give <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+  </button>
+</p>
+
+
 <% if user_submitted_restaurant?(@restaurant) %>
   <%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %> <br />
   <%= link_to "Delete Restaurant", @restaurant, method: :delete,
