@@ -2,11 +2,26 @@
  <%= get_page_title %>
 <% end %>
 
+ <div class="row">
+    <div class="col-sm-8">
+
 <% @restaurants.each do |resto| %>
-  <h3><%= link_to resto.name, resto %></h3>
-  <p>
-    <strong><%= resto.address %></strong><br />
-    <strong><%= resto.telephone_number %></strong><br />
-    <strong><%= resto.cuisine %></strong><br />
-  </p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title"><h2><%= link_to resto.name, resto %></h2></div>
+    </div>
+    <div class="panel-body restaurant-info">
+      <strong>Address: </strong><%= resto.address %><br />
+      <strong>Telephone number: </strong><%= resto.telephone_number %><br />
+      <strong>Cuisine: </strong><%= resto.cuisine %><br />
+      
+      <br />
+      <span class="glyphicon glyphicon-star resto-star" aria-hidden="true"></span>
+        <%= resto.stars_count %><br />
+    </div>
+  </div>
+  
 <% end %>
+
+  </div>
+</div>    
