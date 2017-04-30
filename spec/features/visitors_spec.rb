@@ -73,6 +73,13 @@ RSpec.feature 'Site Visitors', type: :feature do
       expect(page).to have_text(/211 Some St\. Manila.+2001 Somewhere Bldg\./)
     end
     
+    scenario 'View the page of a specific restaurant' do
+      kainan_form.visit_page.click("Janet's Fine Dining", '.col-lg-8')
+      
+      expect(page).to have_content("Janet's Fine Dining")
+      expect(page).not_to have_content('Jollyboy sa Kanto')
+      expect(page).not_to have_content("Gema's Eatery")
+    end
   end  # 'A visitor should be able to'
   
   

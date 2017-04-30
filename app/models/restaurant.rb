@@ -20,7 +20,7 @@ class Restaurant < ApplicationRecord
       /^\d\d \d\d\d-\d\d\d\d$/,                    # 02 123-4567
       /^\+\d\d \d \d\d\d-\d\d\d\d ext. \d\d\d$/    # +63 2 123-4567 ext. 103
     ]
-                  
+    
     matched = valid_phone_formats.map do |re|
       re.match(telephone_number)
     end.any?

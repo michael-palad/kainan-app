@@ -89,6 +89,84 @@ RSpec.feature 'Signed-in Users', type: :feature do
       expect(page).not_to have_content("Gema's Eatery")
     end
     
-  end  # 'A visitor should be able to'
+    scenario 'View the page of a specific restaurant' do
+      kainan_form.visit_page.login_user(user)
+                .click('Tasyo Food', '.col-lg-8')
+      
+      expect(page).to have_content('Tasyo Food')
+      expect(page).not_to have_content('Jollyboy sa Kanto')
+      expect(page).not_to have_content("Gema's Eatery")
+    end
+    
+    scenario 'Add a new restaurant' do
+      kainan_form.visit_page.login_user(user)
+                .click('Add Restaurant')
+                .fill('Name': 'Happy Restaurant',
+                      'Address': '1 Maligaya St. Cubao Quezon City',
+                      'Telephone number': '02 111-4522')
+                .select_option('Fastfood', 'restaurant_cuisine')
+                .click('Add Restaurant', 'form')
+    
+      expect(page).to have_content('Happy Restaurant')
+      expect(page).to have_content('1 Maligaya St. Cubao Quezon City')
+      expect(page).to have_content('02 111-4522')
+    end
+    
+    scenario 'Edit an existing restaurant' do
+      create(:restaurant, name: "Bagong Pangalan Resto", 
+          address: '100 Masagana St. Pasig City', telephone_number: '02 888-4522',
+          cuisine: 'Korean', user: user)        
+        
+      kainan_form.visit_page.login_user(user)
+                .click("Bagong Pangalan Resto", '.col-lg-8')
+                .click('Edit Restaurant')
+                .fill('Name': 'Binagong Pangalan Kainan',
+                      'Telephone number': '02 555-2222')
+                .click('Update Restaurant')
+                
+      expect(page).to have_content('Binagong Pangalan Kainan')
+      expect(page).to have_content('02 555-2222')
+      expect(page).not_to have_content('Bagong Pangalan Resto')
+      expect(page).not_to have_content('02 888-4522')
+    end
+    
+    scenario 'Delete an existing restaurant' do
+      create(:restaurant, name: "Someone's Eatery", 
+          address: '20 Somewhere Taguig City', telephone_number: '02 222-2322',
+          cuisine: 'Fastfood', user: user)        
+        
+      kainan_form.visit_page.login_user(user)
+                .click("Someone's Eatery", '.col-lg-8')
+                .click('Delete Restaurant')
+                
+      expect(page).not_to have_content("Someone's Eatery")
+      expect(page).not_to have_content('02 222-2322')
+    end
+    
+    scenario 'Give a star to a restaurant' do
+      kainan_form.visit_page.login_user(user)
+                .click('Tasyo Food', '.col-lg-8')
+      click_link('btn-give-star')          
+    
+      expect(page).to have_content('Tasyo Food')
+      expect(page).to have_content('Take')
+      expect(page).not_to have_content('Give')  
+    end
+    
+    scenario 'Remove star from a restaurant' do
+      resto = create(:restaurant, name: 'Not an Eatery', 
+        address: 'Somewhere St. Nowhere City',
+        telephone_number: '02 222-4522', cuisine: 'Fastfood', user: user)
+        
+      kainan_form.visit_page.login_user(user)
+                .click('Not an Eatery', '.col-lg-8')
+      click_link('btn-take-star')          
+    
+      expect(page).to have_content('Not an Eatery')
+      expect(page).to have_content('Give')
+      expect(page).not_to have_content('Take')  
+    end
+
+  end  # 'A signed-in user should be able to'
   
 end

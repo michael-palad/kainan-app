@@ -5,8 +5,8 @@
 <div class="row">
     <div class="col-lg-8">
 
-<div class="panel panel-default">
-  <div class="panel-heading">
+<div class="panel resto-panel">
+  <div class="panel-heading resto-panel-heading">
     <div class="panel-title">
       <h2 class="resto-title"><%= @restaurant.name %>
       </h2>
@@ -24,13 +24,13 @@
     <% if user_signed_in? %>
       <% if current_user.starred_restaurants.include?(@restaurant) %>
         <%= link_to unstar_restaurant_path(@restaurant), method: :delete,
-              class: "btn-sm btn-success" do %>
+              class: "btn-sm btn-success", id: 'btn-take-star' do %>
           Take <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         <% end %>
         
       <% else %>
         <%= link_to star_restaurant_path(@restaurant), method: :patch,
-              class: "btn-sm btn-success" do %>
+              class: "btn-sm btn-success", id: 'btn-give-star' do %>
           Give <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
         <% end %>
         
