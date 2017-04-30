@@ -4,7 +4,7 @@ class Restaurant < ApplicationRecord
   # Associations
   belongs_to :user
   has_many :stars
-  has_many :starring_users, through: :stars
+  has_many :starring_users, through: :stars, dependent: :destroy
   
   # Validation
   validates_presence_of :name, :address, :telephone_number, :cuisine

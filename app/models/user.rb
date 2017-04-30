@@ -7,6 +7,6 @@ class User < ApplicationRecord
   # Associations
   has_many :restaurants
   has_many :stars
-  has_many :starred_restaurants, through: :stars
+  has_many :starred_restaurants, through: :stars, dependent: :destroy
   
 end
