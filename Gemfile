@@ -7,7 +7,6 @@ end
 
 
 gem 'rails', '~> 5.0.2'
-gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -34,6 +33,22 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.2', '>= 4.2.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+
+group :production do
+  gem 'pg'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'factory_girl_rails', '~> 4.8'
+  gem 'sqlite3'
+end
+
+group :test do
+  gem 'capybara', '~> 2.13'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+end
+
 
 
 
