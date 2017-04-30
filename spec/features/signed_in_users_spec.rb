@@ -154,7 +154,7 @@ RSpec.feature 'Signed-in Users', type: :feature do
     end
     
     scenario 'Remove star from a restaurant' do
-      resto = create(:restaurant, name: 'Not an Eatery', 
+      create(:restaurant, name: 'Not an Eatery', 
         address: 'Somewhere St. Nowhere City',
         telephone_number: '02 222-4522', cuisine: 'Fastfood', user: user)
         

@@ -8,6 +8,7 @@ class Restaurant < ApplicationRecord
   
   # Validation
   validates_presence_of :name, :address, :telephone_number, :cuisine
+  validates_uniqueness_of :name
   validates :cuisine, 
             inclusion: { in: %w(Filipino Chinese American Korean Fastfood),
             message: "%{value} is not a valid cuisine category" }
