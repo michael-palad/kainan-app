@@ -27,6 +27,11 @@
 
 .side-panel {
   min-height: 150px;
+  border: 1px solid black;
+}
+
+.side-panel > .panel-body {
+  font-size: 18px;
 }
 
 .resto-title {
@@ -39,6 +44,29 @@
   margin-bottom: 5px;    
 }
 
+.main-container {
+  margin-top: 90px;
+}
+
+.resto-panel {
+  margin-bottom: 50px;
+  border: 1px solid black;
+}
+
+.resto-panel-heading {
+  background-image: none;
+  background-color: #2db88d;
+  color: white;
+}
+
+.resto-title-link {
+  color: white;
+}
+
+.resto-title-link:hover {
+  color: lightgray;
+  text-decoration: underline;
+}
 
 // Bootstrap Navbar
 $bgDefault      : #2db88d;
@@ -91,4 +119,5 @@ $colHover       : #edf2f6;
             color: $colHover;
             background-color: $bgHighlight; }}
 }
+
 

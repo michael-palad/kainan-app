@@ -5,8 +5,8 @@
 <div class="row">
   
   <div class="col-lg-4 col-lg-push-8">
-    <div class="panel panel-default side-panel">
-      <div class="panel-heading">
+    <div class="panel side-panel">
+      <div class="panel-heading resto-panel-heading">
         <div class="panel-title">
           <h2 class="sidebar-title"><%= get_page_title %></h2>
         </div>
@@ -29,11 +29,11 @@
   <div class="col-lg-8 col-lg-pull-4">
 
   <% @restaurants.each do |resto| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class="panel resto-panel">
+    <div class="panel-heading resto-panel-heading">
       <div class="panel-title">
         <h2 class="resto-title">
-          <%= link_to resto.name, resto %>
+          <%= link_to resto.name, resto, class: "resto-title-link" %>
         </h2>
       </div>
     </div>
