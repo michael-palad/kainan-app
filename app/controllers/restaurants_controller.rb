@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = current_user.restaurants.build(restaurant_params)
     if @restaurant.save
-      redirect_to root_path  
+      redirect_to @restaurant  
     else
       render 'new'
     end
