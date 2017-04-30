@@ -5,7 +5,7 @@ class RestaurantsController < ApplicationController
   before_action :find_params, only: [:show, :edit, :update, :destroy,
                               :give_star, :remove_star]
   
-  RestaurantsPerPage = 3
+  RestaurantsPerPage = 8
   
   def index
     @restaurants = Restaurant.order(created_at: :desc)
