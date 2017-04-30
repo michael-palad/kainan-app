@@ -15,7 +15,7 @@ module ApplicationHelper
       elsif action_name == 'starred_filter'
         return 'My Starred Restaurants'
       else
-        return "let's eat"
+        return "Home"
       end
     end
   end
@@ -32,4 +32,5 @@ module ApplicationHelper
   def pagination_shown?
     action_name != 'random'
   end
+  
 end

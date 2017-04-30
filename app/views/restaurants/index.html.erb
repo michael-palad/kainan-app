@@ -6,13 +6,22 @@
   
   <div class="col-lg-4 col-lg-push-8">
     <div class="panel panel-default side-panel">
-    <!--  <div class="panel-heading">-->
-    <!--    <div class="panel-title">Random</div>-->
-    <!--  </div>-->
-    <!--</div>-->
+      <div class="panel-heading">
+        <div class="panel-title">
+          <h2 class="sidebar-title"><%= get_page_title %></h2>
+        </div>
+      </div>
     
       <div class="panel-body">
-        Random
+        <ul>
+          <% @restaurants.each do |resto| %>
+            <li>
+              <%= link_to resto.name, resto %>
+              (<%= link_to resto.cuisine, 
+                   cuisine_restaurants_path(resto.cuisine.downcase) %>)
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>  <!-- col-lg-4 -->
@@ -23,7 +32,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="panel-title">
-        <h2 class="resto-title"><%= link_to resto.name, resto %></h2>
+        <h2 class="resto-title">
+          <%= link_to resto.name, resto %>
+        </h2>
       </div>
     </div>
     <div class="panel-body restaurant-info">
