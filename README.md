@@ -1,24 +1,11 @@
-# README
+# Kainan-app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A restaurant listing-app written on Ruby on Rails.
 
-Things you may want to cover:
+## To run
 
-* Ruby version
+rails db:migrate
 
-* System dependencies
+rails db:seed  # optional to seed initial data
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+rails server
