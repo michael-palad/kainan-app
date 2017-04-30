@@ -6,9 +6,10 @@ RSpec.feature 'Site Visitors', type: :feature do
     let(:kainan_form) { PageForm.new }
     
     before do
-      some_user = create(:user)    
+      some_user = create(:user)
+      another_user = create(:user, email: 'another@email.com')
         
-      create(:restaurant, name: "Resty's Resto", address: '211 Some St. Manila',
+      resto1 = create(:restaurant, name: "Resty's Resto", address: '211 Some St. Manila',
         telephone_number: '02 122-4567', cuisine: 'Filipino', user: some_user)    
       create(:restaurant, name: "Janet's Fine Dining", 
         address: '302 Awesome Ave. Pasig City', telephone_number: '02 123-4522',
@@ -18,9 +19,11 @@ RSpec.feature 'Site Visitors', type: :feature do
         cuisine: 'Filipino', user: some_user)    
       create(:restaurant, name: 'Jollyboy sa Kanto', 
         address: '802 Main Ave. cor. Side St. Manila', 
-        telephone_number: '02 333-2261', cuisine: 'Fastfood', user: some_user)    
+        telephone_number: '02 333-2261', cuisine: 'Fastfood', user: another_user)    
       create(:restaurant, name: "Gema's Eatery", address: '20 Tall Building Pasig',
-        telephone_number: '02 555-4522', cuisine: 'Fastfood', user: some_user)    
+        telephone_number: '02 555-4522', cuisine: 'Fastfood', user: another_user)
+        
+      resto1.starring_users << another_user    
     end
       
     scenario 'View the Home Page' do
@@ -29,7 +32,7 @@ RSpec.feature 'Site Visitors', type: :feature do
       expect(page).to have_content('Kainan App')
     end      
     
-    scenario 'Sign Up an account' do
+    scenario 'Sign Up for an account' do
       kainan_form.visit_page.click('Sign Up')
         .fill('Email': 'sample@example.com', 'Password': 'my_password2',
           'Password confirmation': 'my_password2')
@@ -43,6 +46,31 @@ RSpec.feature 'Site Visitors', type: :feature do
       
       expect(page).to have_content("Resty's Resto")
       expect(page).to have_content("Gema's Eatery")
+    end
+    
+    scenario 'List 3 Random restaurants' do
+      kainan_form.visit_page.click('Random')
+      
+      expect(page).to have_selector('.resto-title-link', count: 3)    
+    end
+    
+    scenario 'View restaurants filtered by cuisines' do
+      kainan_form.visit_page.click('Filipino', '.dropdown-menu')
+                            
+      expect(page).to have_content("Resty's Resto")
+      expect(page).to have_content('Tasyo Food')
+      expect(page).not_to have_content("Janet's Fine Dining")
+      expect(page).not_to have_content('Jollyboy sa Kanto')
+      expect(page).not_to have_content("Gema's Eatery")
+    end
+    
+    scenario 'View restaurants by popularity' do
+      kainan_form.visit_page.click('Most Popular')
+      
+      # test ordering via regular expression
+      expect(page).to have_text(/Resty\'s Resto.+Tasyo Food/)
+      expect(page).to have_text(/Resty\'s Resto.+Gema\'s Eatery/)
+      expect(page).to have_text(/211 Some St\. Manila.+2001 Somewhere Bldg\./)
     end
     
   end  # 'A visitor should be able to'
