@@ -21,7 +21,7 @@ emails.each do |email|
 end
 
 # 3. Create restaurant data
-Restaurant_Count = 50
+Restaurant_Count = 100
 
 def get_random_name
   first_part_type = rand(1..5)

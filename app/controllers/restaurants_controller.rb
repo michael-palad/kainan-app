@@ -66,6 +66,7 @@ class RestaurantsController < ApplicationController
   
   def cuisine_filter
     @restaurants = Restaurant.where('cuisine = ?', params[:name].capitalize)
+        .order(stars_count: :desc)
         .paginate(:page => params[:page], :per_page => RestaurantsPerPage)
     render 'index'
   end  
