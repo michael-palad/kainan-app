@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          
   # Associations
-  has_many :restaurants
+  has_many :restaurants, dependent: :destroy
   has_many :stars
   has_many :starred_restaurants, through: :stars, dependent: :destroy
   
