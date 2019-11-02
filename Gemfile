@@ -30,7 +30,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added Gems
-gem 'devise', '~> 4.2', '>= 4.2.1'
+gem 'devise', '~> 4.7'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
