@@ -6,13 +6,13 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.0.3'
 gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.7'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2', '>= 4.2.2'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
@@ -21,7 +21,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 3.5.1'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -30,7 +30,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added Gems
-gem 'devise', '~> 4.2', '>= 4.2.1'
+gem 'devise', '~> 4.3', '>= 4.3.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
@@ -41,13 +41,13 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
-  gem 'factory_girl_rails', '~> 4.8'
+  gem 'rspec-rails', '~> 3.6', '>= 3.6.0'
+  gem 'factory_girl_rails', '~> 4.9', '>= 4.9.0'
   gem 'sqlite3'
 end
 
 group :test do
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 2.14', '>= 2.14.0'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
 end
 
